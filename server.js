@@ -12,6 +12,7 @@ app.set('view engine','hbs');
 hbs.registerHelper('currentYear',() => {
     return new Date().getFullYear();
 });
+
 hbs.registerHelper('screamIt',(text)=>{
     return text.toUpperCase();
 });
@@ -58,6 +59,12 @@ app.get('/bad',(req,res) => {
     res.send({errorMessage:'Something went wrong!'});
 });
 
+app.get('/projects',(req, res )=>{
+    res.render('projects.hbs',{
+        pageTitle:'Projects',
+        message:'My projects'
+    });
+});
 
 app.listen(port,()=>{
     console.log("server started on port "+port+"!!! Go to http://localhost:"+port);
